@@ -1,0 +1,53 @@
+{
+    "name": "keyagency/taxonomy-terms-order",
+    "description": "Drag & drop reordering for Statamic taxonomy terms",
+    "type": "statamic-addon",
+    "license": "MIT",
+    "homepage": "https://keyagency.nl",
+    "support": {
+        "email": "development@keyagency.nl"
+    },
+    "require": {
+        "php": "^8.2",
+        "pixelfear/composer-dist-plugin": "^0.1.6",
+        "statamic/cms": "^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "KeyAgency\\TaxonomyTermsOrder\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "KeyAgency\\TaxonomyTermsOrder\\Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "laravel/pint": "^1.13",
+        "orchestra/testbench": "^10.8"
+    },
+    "config": {
+        "allow-plugins": {
+            "pixelfear/composer-dist-plugin": true
+        }
+    },
+    "extra": {
+        "download-dist": {
+            "url": "https://github.com/keyagency/taxonomy-terms-order/releases/download/{$version}/dist.tar.gz",
+            "path": "resources/dist"
+        },
+        "statamic": {
+            "name": "Taxonomy Terms Order",
+            "description": "Drag & drop reordering for taxonomy terms in the Control Panel",
+            "developer": "Key Agency",
+            "developer_url": "https://keyagency.nl"
+        },
+        "laravel": {
+            "providers": [
+                "KeyAgency\\TaxonomyTermsOrder\\ServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

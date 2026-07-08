@@ -11,5 +11,5 @@
 - New terms are automatically appended to the end of manually ordered taxonomies
 - Reset button to remove the manual order and restore alphabetical sorting
 - Dedicated `reorder {taxonomy} terms` permission per taxonomy, grouped under "Taxonomy Terms Order"
-- Configurable list of orderable taxonomies (defaults to all)
+- Configurable list of orderable taxonomies (defaults to all), publishable to `config/statamic/taxonomy-terms-order.php`
 - English and Dutch translations

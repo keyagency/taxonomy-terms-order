@@ -98,7 +98,7 @@ class ReorderTermsTest extends TestCase
     #[Test]
     public function it_returns_404_for_taxonomies_that_are_not_orderable()
     {
-        config(['taxonomy-terms-order.taxonomies' => ['categories']]);
+        config(['statamic.taxonomy-terms-order.taxonomies' => ['categories']]);
 
         $this
             ->actingAs($this->superUser())

@@ -37,7 +37,7 @@ class ServiceProvider extends AddonServiceProvider
 
         $this->mergeConfigFrom(
             __DIR__.'/../config/taxonomy-terms-order.php',
-            'taxonomy-terms-order'
+            'statamic.taxonomy-terms-order'
         );
     }
 
@@ -97,7 +97,7 @@ class ServiceProvider extends AddonServiceProvider
 
         // php artisan vendor:publish --tag=taxonomy-terms-order-config
         $this->publishes([
-            __DIR__.'/../config/taxonomy-terms-order.php' => config_path('taxonomy-terms-order.php'),
+            __DIR__.'/../config/taxonomy-terms-order.php' => config_path('statamic/taxonomy-terms-order.php'),
         ], 'taxonomy-terms-order-config');
     }
 }

@@ -36,7 +36,7 @@ class IndexTest extends TestCase
     #[Test]
     public function it_only_lists_taxonomies_from_the_config()
     {
-        config(['taxonomy-terms-order.taxonomies' => ['tags']]);
+        config(['statamic.taxonomy-terms-order.taxonomies' => ['tags']]);
 
         $this
             ->actingAs(tap(User::make()->email('super@example.com')->makeSuper())->save())

@@ -12,7 +12,7 @@ class OrderableTaxonomies
      */
     public static function includes(string $handle): bool
     {
-        $configured = config('taxonomy-terms-order.taxonomies', []);
+        $configured = config('statamic.taxonomy-terms-order.taxonomies', []);
 
         if (in_array('*', $configured)) {
             return Taxonomy::findByHandle($handle) !== null;

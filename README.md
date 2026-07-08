@@ -40,7 +40,7 @@ php artisan vendor:publish --tag=taxonomy-terms-order-config
 ```
 
 ``` php
-// config/taxonomy-terms-order.php
+// config/statamic/taxonomy-terms-order.php
 
 return [
     'taxonomies' => ['article_categories'], // or ['*'] for all

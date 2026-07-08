@@ -5,13 +5,18 @@ on:
     tags:
       - 'v*'
 
+permissions: {}
+
 jobs:
   release:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Install PHP dependencies
         run: composer install --no-interaction --no-progress
@@ -22,10 +27,27 @@ jobs:
       - name: Build assets
         run: npm run build
 
-      - name: Package dist
-        run: tar -czf dist.tar.gz -C resources dist
+      - name: Create zip
+        run: cd resources && tar -czvf dist.tar.gz dist
+
+      - name: Get changelog
+        id: changelog
+        uses: statamic/changelog-action@v1
+        with:
+          version: ${{ github.ref }}
 
       - name: Create release
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release create "$GITHUB_REF_NAME" dist.tar.gz --title "$GITHUB_REF_NAME" --generate-notes
+          # RELEASE_TOKEN is a personal access token, so the release is authored
+          # by that account instead of github-actions.
+          GH_TOKEN: ${{ secrets.RELEASE_TOKEN || github.token }}
+          RELEASE_VERSION: ${{ steps.changelog.outputs.version }}
+          RELEASE_NOTES: ${{ steps.changelog.outputs.text }}
+        run: |
+          PRERELEASE=""
+          if [[ "$RELEASE_VERSION" == *-beta* ]]; then PRERELEASE="--prerelease"; fi
+          gh release create "$RELEASE_VERSION" \
+            --title "$RELEASE_VERSION" \
+            --notes "$RELEASE_NOTES" \
+            $PRERELEASE \
+            ./resources/dist.tar.gz

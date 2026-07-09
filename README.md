@@ -17,6 +17,8 @@ Statamic supports reordering entries in collections, but taxonomy terms are alwa
 
 ## How to Install
 
+Requires Statamic 6.21 or higher (the version that introduced default sorting support for taxonomies).
+
 Run the following command from your project root:
 
 ``` bash

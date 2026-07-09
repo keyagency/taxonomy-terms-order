@@ -1,5 +1,10 @@
 # Release Notes
 
+## 1.0.1 (2026-07-09)
+
+### What's fixed
+- Require Statamic 6.21 or higher, since the addon relies on the taxonomy default sorting support introduced in that version. This prevents a `Call to undefined method Taxonomy::setSortField()` error when saving the order on older Statamic versions.
+
 ## 1.0.0 (2026-07-08)
 
 ### What's new
